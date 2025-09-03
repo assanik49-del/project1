@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Что стоит за конфликтом | Белая презентация</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            color: #1a202c;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .presentation-wrapper {
+            max-width: 100vw;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            padding: 0 60px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* Анимированный фон */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(1, 61, 133, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(1, 61, 133, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(1, 61, 133, 0.06) 0%, transparent 50%);
+            opacity: 0.6;
+            animation: float-bg 20s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float-bg {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+
+        /* Анимации появления */
+        .fade-in {
+            opacity: 1;
+            animation: fadeInEffect 1s ease-out;
+        }
+
+        .slide-up {
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideUpEffect 0.8s ease-out;
+        }
+
+        .slide-left {
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideLeftEffect 0.8s ease-out;
+        }
+
+        .slide-right {
+            opacity: 1;
+            transform: translateX(0);
+            animation: slideRightEffect 0.8s ease-out;
+        }
+
+        .scale-in {
+            opacity: 1;
+            transform: scale(1);
+            animation: scaleInEffect 0.8s ease-out;
+        }
+
+        .bounce-in {
+            opacity: 1;
+            transform: scale(1);
+            animation: bounceInEffect 1s ease-out;
+        }
+
+        @keyframes fadeInEffect {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideUpEffect {
+            0% { transform: translateY(30px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes slideLeftEffect {
+            0% { transform: translateX(-30px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes slideRightEffect {
+            0% { transform: translateX(30px); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes scaleInEffect {
+            0% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounceInEffect {
+            0% { transform: scale(0.8); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Анимации с задержкой */
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1s; }
+
+        .fade-in, .slide-up, .slide-left, .slide-right, .scale-in, .bounce-in {
+            animation-fill-mode: both;
+        }
+
+        .slide-number {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(26, 32, 44, 0.6);
+            z-index: 100;
+        }
+
+        /* Слайд 1 - Титульный */
+        .title-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .title-main {
+            font-size: clamp(50px, 10vw, 120px);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #1a202c, #013D85, #0056b3);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-text 3s ease infinite;
+        }
+
+        @keyframes gradient-text {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .title-subtitle {
+            font-size: clamp(18px, 3vw, 28px);
+            font-weight: 300;
+            color: rgba(26, 32, 44, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        .title-icon {
+            font-size: clamp(80px, 15vw, 120px);
+            margin-bottom: 40px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(1, 61, 133, 0.3));
+            }
+            50% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 40px rgba(1, 61, 133, 0.5));
+            }
+        }
+
+        /* Слайд 2 - Процесс */
+        .process-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+
+        .process-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #013D85;
+            letter-spacing: -0.02em;
+        }
+
+        .process-card {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(1, 61, 133, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: gentle-float 6s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes gentle-float {
+            0%, 100% {
+                transform: translateY(0px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            }
+            50% {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(1, 61, 133, 0.3);
+            box-shadow: 0 20px 60px rgba(1, 61, 133, 0.15);
+            animation-play-state: paused;
+        }
+
+        .process-text {
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 400;
+            color: #374151;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Слайд 3 - Примеры */
+        .examples-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .examples-title {
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #013D85;
+        }
+
+        .examples-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .examples-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .example-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .example-visual {
+            flex: 0 0 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            position: relative;
+            margin: 0 25px;
+        }
+
+        .example-item:nth-child(1) .example-visual {
+            background: linear-gradient(135deg, rgba(1, 61, 133, 0.1), rgba(1, 61, 133, 0.2));
+            border: 3px solid rgba(1, 61, 133, 0.3);
+            animation: pulse-ring-1 3s ease-in-out infinite;
+        }
+
+        .example-item:nth-child(2) .example-visual {
+            background: linear-gradient(135deg, rgba(1, 61, 133, 0.15), rgba(1, 61, 133, 0.25));
+            border: 3px solid rgba(1, 61, 133, 0.4);
+            animation: pulse-ring-2 3s ease-in-out infinite 1s;
+        }
+
+        .example-item:nth-child(3) .example-visual {
+            background: linear-gradient(135deg, rgba(1, 61, 133, 0.2), rgba(1, 61, 133, 0.3));
+            border: 3px solid rgba(1, 61, 133, 0.5);
+            animation: pulse-ring-3 3s ease-in-out infinite 2s;
+        }
+
+        @keyframes pulse-ring-1 {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(1, 61, 133, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(1, 61, 133, 0);
+            }
+        }
+
+        @keyframes pulse-ring-2 {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(1, 61, 133, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 25px rgba(1, 61, 133, 0);
+            }
+        }
+
+        @keyframes pulse-ring-3 {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(1, 61, 133, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 30px rgba(1, 61, 133, 0);
+            }
+        }
+
+        .example-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(1, 61, 133, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .example-item:nth-child(1) .example-content {
+            border-left: 5px solid rgba(1, 61, 133, 0.6);
+        }
+
+        .example-item:nth-child(2) .example-content {
+            border-right: 5px solid rgba(1, 61, 133, 0.7);
+        }
+
+        .example-item:nth-child(3) .example-content {
+            border-left: 5px solid rgba(1, 61, 133, 0.8);
+        }
+
+        .example-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(1, 61, 133, 0.15);
+            border-color: rgba(1, 61, 133, 0.3);
+        }
+
+        .example-surface {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .example-surface::before {
+            content: '👁️';
+            font-size: 14px;
+        }
+
+        .example-reality {
+            font-size: 15px;
+            color: #374151;
+            line-height: 1.5;
+            padding-left: 16px;
+            border-left: 3px solid rgba(1, 61, 133, 0.2);
+            position: relative;
+        }
+
+        .example-reality::before {
+            content: '💭';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            background: white;
+            padding: 2px;
+        }
+
+        .connecting-line {
+            display: none;
+        }
+
+        .flow-arrow {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: rgba(1, 61, 133, 0.4);
+            animation: arrow-pulse 2s ease-in-out infinite;
+        }
+
+        .example-item:nth-child(even) .flow-arrow {
+            left: -20px;
+            right: auto;
+            transform: translateY(-50%) scaleX(-1);
+        }
+
+        .example-item:last-child .flow-arrow {
+            display: none;
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% {
+                opacity: 0.4;
+                transform: translateY(-50%) translateX(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50%) translateX(5px);
+            }
+        }
+
+        .example-item:nth-child(even) .flow-arrow {
+            animation: arrow-pulse-reverse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrow-pulse-reverse {
+            0%, 100% {
+                opacity: 0.4;
+                transform: translateY(-50%) scaleX(-1) translateX(0);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(-50%) scaleX(-1) translateX(5px);
+            }
+        }
+
+        /* Слайд 4 - Айсберг */
+        .iceberg-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+
+        .iceberg-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #013D85;
+        }
+
+        .iceberg-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .iceberg-visual {
+            background: linear-gradient(180deg, 
+                rgba(1, 61, 133, 0.1) 0%, 
+                rgba(1, 61, 133, 0.15) 30%, 
+                rgba(1, 61, 133, 0.2) 70%, 
+                rgba(1, 61, 133, 0.25) 100%);
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            animation: iceberg-float 8s ease-in-out infinite;
+        }
+
+        @keyframes iceberg-float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .iceberg-surface {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(1, 61, 133, 0.2);
+        }
+
+        .iceberg-underwater {
+            background: rgba(1, 61, 133, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid rgba(1, 61, 133, 0.25);
+        }
+
+        .iceberg-text {
+            font-size: 18px;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .iceberg-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 15px;
+        }
+
+        /* Слайд 5 - Важность */
+        .importance-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .importance-slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(1, 61, 133, 0.03) 0%, transparent 70%);
+            animation: rotate-bg 30s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotate-bg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .importance-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            margin-bottom: 280px;
+            color: #013D85;
+            position: relative;
+            z-index: 2;
+            margin-top: -180px;
+        }
+
+        .importance-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .importance-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            position: relative;
+        }
+
+        .center-element {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, rgba(1, 61, 133, 0.1), rgba(1, 61, 133, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border: 3px solid rgba(1, 61, 133, 0.3);
+            animation: center-pulse 4s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(1, 61, 133, 0.2);
+        }
+
+        @keyframes center-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 40px rgba(1, 61, 133, 0.2);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 60px rgba(1, 61, 133, 0.4);
+            }
+        }
+
+        .importance-cards {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 450px;
+        }
+
+        .importance-card {
+            position: absolute;
+            width: 220px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(1, 61, 133, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .importance-card:nth-child(1) {
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-color: rgba(1, 61, 133, 0.25);
+            animation: orbit-1 8s ease-in-out infinite;
+        }
+
+        .importance-card:nth-child(2) {
+            bottom: -90px;
+            left: -20px;
+            border-color: rgba(1, 61, 133, 0.3);
+            animation: orbit-2 8s ease-in-out infinite 2.7s;
+        }
+
+        .importance-card:nth-child(3) {
+            bottom: -90px;
+            right: -20px;
+            border-color: rgba(1, 61, 133, 0.35);
+            animation: orbit-3 8s ease-in-out infinite 5.3s;
+        }
+
+        @keyframes orbit-1 {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-15px);
+                box-shadow: 0 25px 50px rgba(1, 61, 133, 0.2);
+            }
+        }
+
+        @keyframes orbit-2 {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+                box-shadow: 0 25px 50px rgba(1, 61, 133, 0.2);
+            }
+        }
+
+        @keyframes orbit-3 {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: translateY(-15px) rotate(-2deg);
+                box-shadow: 0 25px 50px rgba(1, 61, 133, 0.2);
+            }
+        }
+
+        .importance-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(1, 61, 133, 0.5);
+            box-shadow: 0 30px 80px rgba(1, 61, 133, 0.25);
+            z-index: 10;
+            animation-play-state: paused;
+        }
+
+        .importance-card:nth-child(1):hover {
+            transform: translateX(-50%) translateY(-20px) scale(1.05);
+        }
+
+        .importance-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+            display: block;
+            animation: icon-bounce 3s ease-in-out infinite;
+        }
+
+        .importance-card:nth-child(1) .importance-icon {
+            animation-delay: 0s;
+        }
+
+        .importance-card:nth-child(2) .importance-icon {
+            animation-delay: 1s;
+        }
+
+        .importance-card:nth-child(3) .importance-icon {
+            animation-delay: 2s;
+        }
+
+        @keyframes icon-bounce {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .importance-text {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .connecting-lines {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            pointer-events: none;
+        }
+
+        .line {
+            position: absolute;
+            background: linear-gradient(45deg, rgba(1, 61, 133, 0.2), rgba(1, 61, 133, 0.1));
+            border-radius: 2px;
+        }
+
+        .line-1 {
+            width: 2px;
+            height: 90px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: line-glow 3s ease-in-out infinite;
+        }
+
+        .line-2 {
+            width: 90px;
+            height: 2px;
+            bottom: 30px;
+            left: 15px;
+            transform: rotate(30deg);
+            animation: line-glow 3s ease-in-out infinite 1s;
+        }
+
+        .line-3 {
+            width: 90px;
+            height: 2px;
+            bottom: 30px;
+            right: 15px;
+            transform: rotate(-30deg);
+            animation: line-glow 3s ease-in-out infinite 2s;
+        }
+
+        @keyframes line-glow {
+            0%, 100% {
+                opacity: 0.3;
+                box-shadow: 0 0 5px rgba(1, 61, 133, 0.2);
+            }
+            50% {
+                opacity: 0.8;
+                box-shadow: 0 0 15px rgba(1, 61, 133, 0.5);
+            }
+        }
+
+        /* Слайд 6 - Решения */
+        .solutions-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+
+        .solutions-title {
+            font-size: clamp(32px, 6vw, 48px);
+            font-weight: 700;
+            margin-bottom: 80px;
+            color: #013D85;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1100px;
+            margin: 0 auto;
+            gap: 30px;
+        }
+
+        .step-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(16, 185, 129, 0.1);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: left;
+            position: relative;
+            transition: all 0.4s ease;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-card:nth-child(1) {
+            border-color: rgba(1, 61, 133, 0.2);
+        }
+
+        .step-card:nth-child(3) {
+            border-color: rgba(1, 61, 133, 0.25);
+        }
+
+        .step-card:nth-child(5) {
+            border-color: rgba(1, 61, 133, 0.3);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 1);
+            border-color: rgba(1, 61, 133, 0.3);
+            box-shadow: 0 20px 60px rgba(1, 61, 133, 0.15);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #1a202c, #013D85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(1, 61, 133, 0.3);
+        }
+
+        .step-title {
+            font-size: clamp(18px, 2.5vw, 22px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1a202c;
+            line-height: 1.3;
+            margin-top: 20px;
+        }
+
+        .step-desc {
+            font-size: clamp(16px, 2vw, 18px);
+            color: #374151;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .step-questions {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(1, 61, 133, 0.1);
+        }
+
+        .step-questions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-questions li {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step-questions li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #013D85;
+            font-weight: 600;
+        }
+
+        .step-arrow {
+            font-size: 30px;
+            color: rgba(1, 61, 133, 0.5);
+            margin: 0 10px;
+            align-self: center;
+        }
+
+        /* Слайд 7 - Заключение */
+        .conclusion-slide {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .conclusion-icon {
+            font-size: clamp(80px, 15vw, 120px);
+            margin-bottom: 40px;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .conclusion-title {
+            font-size: clamp(40px, 8vw, 64px);
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: #013D85;
+            letter-spacing: -0.02em;
+        }
+
+        .conclusion-text {
+            font-size: clamp(18px, 3vw, 28px);
+            color: rgba(26, 32, 44, 0.7);
+            margin-bottom: 50px;
+            line-height: 1.4;
+        }
+
+        .conclusion-highlight {
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 600;
+            color: #1a202c;
+            padding: 30px;
+            border: 2px solid rgba(1, 61, 133, 0.2);
+            border-radius: 16px;
+            background: rgba(59, 130, 246, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .conclusion-highlight:hover {
+            transform: scale(1.05);
+            background: rgba(59, 130, 246, 0.1);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Навигация */
+        .nav-dots {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(26, 32, 44, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: #3b82f6;
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 0 30px;
+            }
+            
+            .steps-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .step-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .importance-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .example-item {
+                flex-direction: column !important;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .example-item:nth-child(even) {
+                flex-direction: column !important;
+            }
+            
+            .example-visual {
+                margin: 0;
+                flex: none;
+                width: 150px;
+                height: 150px;
+                font-size: 40px;
+            }
+            
+            .flow-arrow {
+                display: none;
+            }
+            
+            .connecting-line {
+                width: 60px;
+                height: 2px;
+                left: 50%;
+                top: -10px;
+                transform: translateX(-50%);
+            }
+            
+            .nav-dots {
+                display: none;
+            }
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .slide {
+            scroll-snap-align: start;
+        }
+
+        body {
+            scroll-snap-type: y mandatory;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-wrapper">
+        <!-- Навигация -->
+        <div class="nav-dots">
+            <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(1)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+            <div class="nav-dot" onclick="scrollToSlide(6)"></div>
+        </div>
+
+        <!-- Слайд 1: Титульный -->
+        <div class="slide title-slide" id="slide-0">
+            <div class="slide-number">1/7</div>
+            <div class="slide-content">
+                <div class="title-icon bounce-in">🔍</div>
+                <h1 class="title-main scale-in delay-1">ЧТО СТОИТ ЗА КОНФЛИКТОМ</h1>
+                <p class="title-subtitle fade-in delay-2">Понимание истинных причин — первый шаг к решению</p>
+            </div>
+        </div>
+
+        <!-- Слайд 2: Процесс -->
+        <div class="slide process-slide" id="slide-1">
+            <div class="slide-number">2/7</div>
+            <div class="slide-content">
+                <h2 class="process-title slide-up">Конфликт — это процесс, а не момент</h2>
+                <div class="process-card scale-in delay-1">
+                    <div class="process-text">
+                        На первый взгляд конфликт может казаться спонтанным.<br><br>
+                        <strong>Вчера</strong> — смеялись на ретро,<br>
+                        <strong>а сегодня</strong> — кто-то хлопнул дверью на встрече.<br><br>
+                        Но правда в том, что конфликт — это не момент, а процесс.<br>
+                        Он зреет — часто тихо.<br><br>
+                        <em>И почти всегда — не о том, о чём говорят вслух.</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 3: Примеры -->
+        <div class="slide examples-slide" id="slide-2">
+            <div class="slide-number">3/7</div>
+            <div class="slide-content">
+                <h2 class="examples-title slide-up">Что происходит на самом деле</h2>
+                <div class="examples-container">
+                    <div class="examples-flow">
+                        <div class="example-item scale-in delay-1">
+                            <div class="connecting-line"></div>
+                            <div class="example-visual">⚔️</div>
+                            <div class="example-content">
+                                <div class="example-surface">Люди спорят о задаче</div>
+                                <div class="example-reality">но на деле борются за влияние, внимание или признание</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="example-item scale-in delay-2">
+                            <div class="connecting-line"></div>
+                            <div class="example-visual">🗣️</div>
+                            <div class="example-content">
+                                <div class="example-surface">Критикуют чужой подход</div>
+                                <div class="example-reality">а внутри злятся, что их не слушают</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                        
+                        <div class="example-item scale-in delay-3">
+                            <div class="connecting-line"></div>
+                            <div class="example-visual">📊</div>
+                            <div class="example-content">
+                                <div class="example-surface">Требуют больше ресурсов</div>
+                                <div class="example-reality">потому что не понимают приоритетов команды</div>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 4: Айсберг -->
+        <div class="slide iceberg-slide" id="slide-3">
+            <div class="slide-number">4/7</div>
+            <div class="slide-content">
+                <h2 class="iceberg-title slide-up">🎯 Конфликт — это айсберг</h2>
+                <div class="iceberg-container scale-in delay-1">
+                    <div class="iceberg-visual">
+                        <div class="iceberg-surface">
+                            <div class="iceberg-label">Видим на поверхности:</div>
+                            <div class="iceberg-text">
+                                Слова и поведение
+                            </div>
+                        </div>
+                        <div class="iceberg-underwater">
+                            <div class="iceberg-label">Скрыто под водой:</div>
+                            <div class="iceberg-text">
+                                Роли, страхи, ожидания, недосказанности
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="fade-in delay-2" style="font-size: 20px; color: #374151; margin-top: 40px; line-height: 1.6;">
+                    Если смотреть только на верхушку —<br>
+                    будешь бесконечно чинить симптомы.
+                </p>
+            </div>
+        </div>
+
+        <!-- Слайд 5: Важность -->
+        <div class="slide importance-slide" id="slide-4">
+            <div class="slide-number">5/7</div>
+            <div class="slide-content">
+                <h2 class="importance-title slide-up">Почему важно идти глубже?</h2>
+                <div class="importance-container">
+                    <div class="importance-visual">
+                        <div class="center-element scale-in delay-1">🎯</div>
+                        <div class="connecting-lines">
+                            <div class="line line-1"></div>
+                            <div class="line line-2"></div>
+                            <div class="line line-3"></div>
+                        </div>
+                        <div class="importance-cards">
+                            <div class="importance-card scale-in delay-2">
+                                <div class="importance-icon">🧠</div>
+                                <div class="importance-text">
+                                    Потому что только так можно перейти от эмоций — к сути.
+                                </div>
+                            </div>
+                            <div class="importance-card scale-in delay-3">
+                                <div class="importance-icon">🔍</div>
+                                <div class="importance-text">
+                                    Потому что истинная причина конфликта — не всегда очевидна.
+                                </div>
+                            </div>
+                            <div class="importance-card scale-in delay-4">
+                                <div class="importance-icon">🤝</div>
+                                <div class="importance-text">
+                                    Потому что пока каждый держится за свою версию — решения не будет.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 6: Решения -->
+        <div class="slide solutions-slide" id="slide-5">
+            <div class="slide-number">6/7</div>
+            <div class="slide-content">
+                <h2 class="solutions-title slide-up">Что помогает?</h2>
+                <div class="steps-container">
+                    <div class="step-card scale-in delay-1">
+                        <div class="step-number">✔️</div>
+                        <h3 class="step-title">Слушать не то, что сказано, а что стоит за словами</h3>
+                        <p class="step-desc">Спросить себя:</p>
+                        <div class="step-questions">
+                            <ul>
+                                <li>А что важно для человека в этом моменте?</li>
+                                <li>Как он это переживает?</li>
+                                <li>О чём он на самом деле говорит?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-arrow fade-in delay-2">→</div>
+                    <div class="step-card scale-in delay-3">
+                        <div class="step-number">✔️</div>
+                        <h3 class="step-title">Выяснять интересы, а не только позиции</h3>
+                        <p class="step-desc">Человек может настаивать на фиче — но на самом деле хочет стабильности, влияния или ясности.</p>
+                    </div>
+                    <div class="step-arrow fade-in delay-4">→</div>
+                    <div class="step-card scale-in delay-5">
+                        <div class="step-number">✔️</div>
+                        <h3 class="step-title">Задавать уточняющие вопросы</h3>
+                        <p class="step-desc">Не «почему ты так сделал?», а:</p>
+                        <div class="step-questions">
+                            <ul>
+                                <li>«Что тебе показалось важным?»</li>
+                                <li>«Что ты хотел достичь?»</li>
+                                <li>«Что тебя беспокоит сейчас?»</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 7: Заключение -->
+        <div class="slide conclusion-slide" id="slide-6">
+            <div class="slide-number">7/7</div>
+            <div class="slide-content">
+                <div class="conclusion-icon bounce-in">🎯</div>
+                <h2 class="conclusion-title scale-in delay-1">Понять — значит не бояться</h2>
+                <p class="conclusion-text fade-in delay-2">
+                    Конфликт становится понятным,<br>
+                    когда ты видишь в нём не только эмоции,<br>
+                    а структуру — причин и потребностей.
+                </p>
+                <div class="conclusion-highlight slide-up delay-3">
+                    Понять конфликт — значит перестать бояться.<br>
+                    А когда не боишься — можно спокойно разговаривать и действовать.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Навигация по слайдам
+        function scrollToSlide(index) {
+            const slide = document.getElementById(`slide-${index}`);
+            slide.scrollIntoView({ behavior: 'smooth' });
+            
+            // Обновляем активную точку
+            document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+
+        // Отслеживание текущего слайда при скролле
+        window.addEventListener('scroll', () => {
+            const slides = document.querySelectorAll('.slide');
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            
+            slides.forEach((slide, index) => {
+                const slideTop = slide.offsetTop;
+                const slideBottom = slideTop + slide.offsetHeight;
+                
+                if (scrollPosition >= slideTop && scrollPosition < slideBottom) {
+                    document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+                }
+            });
+        });
+
+        // Клавиатурная навигация
+        document.addEventListener('keydown', (e) => {
+            const currentActive = document.querySelector('.nav-dot.active');
+            const currentIndex = Array.from(document.querySelectorAll('.nav-dot')).indexOf(currentActive);
+            
+            if (e.key === 'ArrowDown' && currentIndex < 6) {
+                scrollToSlide(currentIndex + 1);
+            } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                scrollToSlide(currentIndex - 1);
+            }
+        });
+
+        // Анимации при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Презентация загружена - все элементы видны и анимированы');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'972f771f91d1e4c3',t:'MTc1NTgzNTI0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
